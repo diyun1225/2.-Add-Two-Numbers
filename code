@@ -1,0 +1,29 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        
+        ListNode* ans;
+        
+        if(l1==NULL)return l2; //我發現沒這行與以下兩行會出現錯誤...
+        else if(l2==NULL)return l1;
+        else if(l1==NULL&&l2==NULL) return NULL;
+        else{
+        int temp=l1->val+l2->val;//相加
+        ListNode* ans=new ListNode(temp%10); //創建新節點～怕他超過10有進位所以%10
+        ans->next=addTwoNumbers(l1->next,l2->next);//下一個相加
+        if(temp>9) ans->next=addTwoNumbers(ans->next,new ListNode(1));//如果剛剛的temp有超過十(進位)，放1跟下一個相加
+        return ans; //歐耶結束
+        }
+        
+    }
+};
