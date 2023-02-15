@@ -14,7 +14,7 @@ public:
         
         ListNode* ans;
         
-        if(l1==NULL)return l2; //我發現沒這行與以下兩行會出現錯誤...
+        if(l1==NULL)return l2; 
         else if(l2==NULL)return l1;
         else if(l1==NULL&&l2==NULL) return NULL;
         else{
